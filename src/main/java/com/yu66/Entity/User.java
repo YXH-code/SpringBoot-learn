@@ -45,4 +45,14 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public User(int id, String user_name, String password, String name) {
+        this.id = id;
+        this.user_name = user_name;
+        this.password = password;
+        this.name = name;
+    }
+
+    public User() {
+    }
 }
