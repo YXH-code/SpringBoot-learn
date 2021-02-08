@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @RequestMapping("/{name}")
     String sayHello(@PathVariable String name) {
-        return "Hello," + name + "!";
+        return "hello," + name + "!";
     }
 }
