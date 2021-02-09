@@ -5,6 +5,7 @@ import com.yu66.entity.User;
 import com.yu66.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -111,5 +112,22 @@ public class UserServiceImpl implements UserService {
     public List<User> showAllUser() {
         List<User> users = userDao.findAll();
         return users;
+    }
+
+    /**
+    * @Description: 插入固定数据测试事务回滚
+    * @Param: []
+    * @return: java.lang.String
+    * @Author: 俞先浩
+    * @Date: 2021/2/9
+    */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public String insertUser() {
+        userDao.save(new User(3,"gct","123","顾陈涛"));
+        userDao.save(new User(4,"lb","123","刘备"));
+        userDao.save(new User(5,"gy","123","关羽"));
+        userDao.save(new User(6,"zf","123","张飞飞123abcLLL哟哟哟"));
+        return "insert user success";
     }
 }

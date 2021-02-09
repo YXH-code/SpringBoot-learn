@@ -3,8 +3,7 @@ package com.yu66.controller;
 import com.yu66.entity.User;
 import com.yu66.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,19 +20,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/insertById")
+    @PostMapping("/insertById")
     public String insertById(int id,String user_name,String password,String name){
         userService.insertById(id,user_name,password,name);
         return "save success";
     }
 
-    @GetMapping("/deleteById")
+    @DeleteMapping("/deleteById")
     public String deleteById(int id){
         userService.deleteById(id);
         return "delete success";
     }
 
-    @GetMapping("/update")
+    @PutMapping("/update")
     public Optional<User> update(int id,String user_name,String password,String name){
         Optional<User> user = userService.update(id, user_name, password, name);
         return user;
@@ -55,6 +54,12 @@ public class UserController {
     public List<User> showAll(){
         List<User> users = userService.showAllUser();
         return users;
+    }
+
+    @PostMapping("/insertUser")
+    public String insertUser(){
+        String string = userService.insertUser();
+        return string;
     }
 
 }
