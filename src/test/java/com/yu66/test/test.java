@@ -1,7 +1,7 @@
-package com.yu66;
+package com.yu66.test;
 
-import com.yu66.Dao.UserDao;
-import com.yu66.Entity.User;
+import com.yu66.dao.UserDao;
+import com.yu66.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,20 +38,6 @@ public class test {
         user3.setName("王五");
         userDao.save(user3);
 
-    }
-
-    @Test
-    public void testDelete() {
-        userDao.deleteById(2);
-    }
-
-    @Test
-    public void testUpdate() {
-    }
-
-    @Test
-    public void testFind() {
-        userDao.findAll();
     }
 
 }

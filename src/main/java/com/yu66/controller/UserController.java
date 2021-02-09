@@ -1,16 +1,20 @@
-package com.yu66.Controller;
+package com.yu66.controller;
 
-import com.yu66.Dao.UserDao;
-import com.yu66.Entity.User;
+import com.yu66.dao.UserDao;
+import com.yu66.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @program: springboot-learn
+ * @description: 用户控制器
+ * @author: 俞先浩
+ * @create: 2021-02-07 10:17
+ **/
 @RestController
 public class UserController {
 
