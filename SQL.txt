@@ -1,6 +1,9 @@
-CREATE TABLE `demo`.`user2` (
+CREATE TABLE `demo`.`user` (
   `id` INT NOT NULL,
   `user_name` VARCHAR(255) NULL,
   `password` VARCHAR(32) NULL,
   `name` VARCHAR(32) NULL,
   PRIMARY KEY (`id`));
+
+  INSERT INTO `demo`.`user` (`id`, `name`, `password`, `user_name`) VALUES ('3', '张三', '123', 'zs');
+  INSERT INTO `demo`.`user` (`id`, `name`, `password`, `user_name`) VALUES ('4', '李四', '123', 'ls');
