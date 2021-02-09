@@ -17,6 +17,7 @@ import java.util.Optional;
  * @create: 2021-02-09 11:59
  **/
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -121,7 +122,7 @@ public class UserServiceImpl implements UserService {
     * @Author: 俞先浩
     * @Date: 2021/2/9
     */
-    @Transactional(rollbackFor = Exception.class)
+
     @Override
     public String insertUser() {
         userDao.save(new User(3,"gct","123","顾陈涛"));

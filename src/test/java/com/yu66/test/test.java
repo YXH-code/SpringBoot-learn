@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -16,28 +17,12 @@ public class test {
     private UserDao userDao;
 
     @Test
+    @Transactional(rollbackFor = Exception.class)
     public void testAdd() {
-        User user1 = new User();
-        user1.setId(1);
-        user1.setUser_name("zs");
-        user1.setPassword("123");
-        user1.setName("张三");
-        userDao.save(user1);
-
-        User user2 = new User();
-        user2.setId(2);
-        user2.setUser_name("ls");
-        user2.setPassword("123");
-        user2.setName("李四");
-        userDao.save(user2);
-
-        User user3 = new User();
-        user3.setId(3);
-        user3.setUser_name("ww");
-        user3.setPassword("123");
-        user3.setName("王五");
-        userDao.save(user3);
-
+        userDao.save(new User(3,"gct","123","顾陈涛"));
+        userDao.save(new User(4,"lb","123","刘备"));
+        userDao.save(new User(5,"gy","123","关羽"));
+        userDao.save(new User(6,"zf","123","张飞飞123abcLLL哟哟哟"));
     }
 
 }
