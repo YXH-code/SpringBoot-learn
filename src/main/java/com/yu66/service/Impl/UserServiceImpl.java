@@ -4,9 +4,12 @@ import com.yu66.dao.UserDao;
 import com.yu66.entity.User;
 import com.yu66.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -155,6 +158,13 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+    * @Description: 根据用户的姓查询用户
+    * @Param: [firstname]
+    * @return: java.util.List<com.yu66.entity.User>
+    * @Author: 俞先浩
+    * @Date: 2021/2/10
+    */
     @Override
     public List<User> findByNameStartingWith(String firstname) {
         List<User> user = userDao.findByNameStartingWith(firstname);
