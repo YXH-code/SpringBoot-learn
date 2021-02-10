@@ -1,0 +1,28 @@
+### get
+GET http://localhost:8080/showAll
+
+
+### test post error
+POST http://localhost:8080/insertUser
+
+
+
+### test get with param
+GET http://localhost:8080/demo/user?id=1&name=zhangsan
+
+
+### test post with form
+POST http://localhost:8080/demo/user
+Content-Type: application/x-www-form-urlencoded
+
+id=999&name=lisi
+
+### test post with body
+POST http://localhost:8080/demo/user-with-body
+Content-Type: application/json
+
+{
+  "id": 123,
+  "name": "王五"
+}
+
