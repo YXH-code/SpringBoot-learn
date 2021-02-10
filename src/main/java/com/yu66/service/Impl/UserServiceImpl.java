@@ -155,4 +155,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public List<User> findByNameStartingWith(String firstname) {
+        List<User> user = userDao.findByNameStartingWith(firstname);
+        return user;
+    }
+
 }

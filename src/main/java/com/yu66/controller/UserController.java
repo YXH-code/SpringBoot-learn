@@ -73,4 +73,10 @@ public class UserController {
         List<User> user = userService.findByNameOrPassword(name, password);
         return user;
     }
+
+    @GetMapping("/findByNameStartingWith")
+    public List<User> findByNameStartingWith(String firstname){
+        List<User> user = userService.findByNameStartingWith(firstname);
+        return user;
+    }
 }

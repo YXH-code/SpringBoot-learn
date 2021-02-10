@@ -24,4 +24,5 @@ public interface UserService {
     //自定义简单查询
     public List<User> findByNameAndPassword(String name,String password);
     public List<User> findByNameOrPassword(String name,String password);
+    public List<User> findByNameStartingWith(String firstname);
 }
