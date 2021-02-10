@@ -3,8 +3,13 @@ package com.yu66.controller;
 import com.yu66.entity.User;
 import com.yu66.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
@@ -16,13 +21,14 @@ import java.util.Optional;
  * @create: 2021-02-07 10:17
  **/
 @RestController
+@Validated
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/insertById")
-    public String insertById(int id,String user_name,String password,String name){
+    public String insertById(int id, String user_name, @NotBlank(message = "密码不能为空") String password, String name){
         userService.insertById(id,user_name,password,name);
         return "save success";
     }

@@ -3,6 +3,7 @@ package com.yu66.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @program: springboot-learn
@@ -17,7 +18,6 @@ public class User {
     private int id;
     private String user_name;
     private String password;
-    @Column(length = 5)
     private String name;
 
     public User() {
