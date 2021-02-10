@@ -44,10 +44,10 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/showNameById")
-    public String showNameById(int id){
-        String name = userService.showNameById(id);
-        return name;
+    @GetMapping("/showByName")
+    public List<User> findByName(String name){
+        List<User> user = userService.findByName(name);
+        return user;
     }
 
     @GetMapping("/showAll")
@@ -62,4 +62,15 @@ public class UserController {
         return string;
     }
 
+    @GetMapping("/findByNameAndPassword")
+    public List<User> findByNameAndPassword(String name,String password){
+        List<User> user = userService.findByNameAndPassword(name, password);
+        return user;
+    }
+
+    @GetMapping("/findByNameOrPassword")
+    public List<User> findByNameOrPassword(String name,String password){
+        List<User> user = userService.findByNameOrPassword(name, password);
+        return user;
+    }
 }

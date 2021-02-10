@@ -15,8 +15,13 @@ public interface UserService {
     public Optional<User> update(int id,String user_name,String password,String name);
 
     public Optional<User> showById(int id);
-    public String showNameById(int id);
+    public List<User> findByName(String name);
     public List<User> showAllUser();
 
+    //测试回滚
     public String insertUser();
+
+    //自定义简单查询
+    public List<User> findByNameAndPassword(String name,String password);
+    public List<User> findByNameOrPassword(String name,String password);
 }

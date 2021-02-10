@@ -17,12 +17,12 @@ public class test {
     private UserDao userDao;
 
     @Test
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void testAdd() {
         userDao.save(new User(3,"gct","123","顾陈涛"));
         userDao.save(new User(4,"lb","123","刘备"));
         userDao.save(new User(5,"gy","123","关羽"));
-        userDao.save(new User(6,"zf","123","张飞飞123abcLLL哟哟哟"));
+        userDao.save(new User(6,"zf","123","张飞"));
     }
 
 }

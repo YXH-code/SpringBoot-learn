@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-    * @Description: 更新用户信息
+    * @Description: 根据ID更新用户信息
     * @Param: [id, user_name, password, name]
     * @return: java.util.Optional<com.yu66.entity.User>
     * @Author: 俞先浩
@@ -88,18 +88,16 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-    * @Description: 根据ID查询用户的姓名
+    * @Description: 根据用户的姓名查询用户
     * @Param: [id]
     * @return: java.lang.String
     * @Author: 俞先浩
     * @Date: 2021/2/9
     */
     @Override
-    public String showNameById(int id) {
-        Optional<User> user = userDao.findById(id);
-        User newUser = user.get();
-        String name = newUser.getName();
-        return name;
+    public List<User> findByName(String name) {
+        List<User> user = userDao.findByName(name);
+        return user;
     }
 
     /**
@@ -111,8 +109,8 @@ public class UserServiceImpl implements UserService {
     */
     @Override
     public List<User> showAllUser() {
-        List<User> users = userDao.findAll();
-        return users;
+        List<User> user = userDao.findAll();
+        return user;
     }
 
     /**
@@ -122,13 +120,39 @@ public class UserServiceImpl implements UserService {
     * @Author: 俞先浩
     * @Date: 2021/2/9
     */
-
     @Override
     public String insertUser() {
         userDao.save(new User(3,"gct","123","顾陈涛"));
         userDao.save(new User(4,"lb","123","刘备"));
         userDao.save(new User(5,"gy","123","关羽"));
-        userDao.save(new User(6,"zf","123","张飞飞123abcLLL哟哟哟"));
+        userDao.save(new User(6,"zf","123","张飞"));
         return "insert user success";
     }
+
+    /**
+    * @Description: 根据姓名和密码查询用户
+    * @Param: [name, password]
+    * @return: com.yu66.entity.User
+    * @Author: 俞先浩
+    * @Date: 2021/2/10
+    */
+    @Override
+    public List<User> findByNameAndPassword(String name, String password) {
+        List<User> user = userDao.findByNameAndPassword(name, password);
+        return user;
+    }
+
+    /**
+    * @Description: 根据姓名或密码查询用户
+    * @Param: [name, password]
+    * @return: java.util.List<com.yu66.entity.User>
+    * @Author: 俞先浩
+    * @Date: 2021/2/10
+    */
+    @Override
+    public List<User> findByNameOrPassword(String name, String password) {
+        List<User> user = userDao.findByNameOrPassword(name, password);
+        return user;
+    }
+
 }
