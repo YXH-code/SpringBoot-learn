@@ -1,10 +1,11 @@
 package com.yu66.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 /**
  * @description: 用户表实体类
@@ -15,19 +16,37 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
-    private int id;
+    private Integer id;
+
+    @NotBlank(message = "用户名不能为空")
     private String user_name;
+
+    @NotBlank(message = "密码不能为空")
+    @Length(min = 3, max = 8, message = "密码长度要求3到8之间。")
     private String password;
+
+    @NotBlank(message = "姓名不能为空")
     private String name;
+
+    @NotNull(message = "年龄不能为空")
+    @Min(value = 0,message = "年龄要>0")
+    @Max(value = 100,message = "年龄要<100")
+    private Integer age;
+
+//    @Email(message = "邮箱格式错误")
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$", message = "email格式有误")
+    private String email;
 
     public User() {
     }
 
-    public User(int id, String user_name, String password, String name) {
+    public User(int id, String user_name, String password, String name, int age, String email) {
         this.id = id;
         this.user_name = user_name;
         this.password = password;
         this.name = name;
+        this.age = age;
+        this.email = email;
     }
 
     public int getId() {
@@ -60,5 +79,21 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

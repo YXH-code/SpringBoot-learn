@@ -51,8 +51,7 @@ public class UserController {
     }
 
     @GetMapping("/showByName")
-    public List<User> findByName(@NotNull(message = "传入的是空值，请传值")
-                                     @NotEmpty(message = "传入的是空字符串，请传值") String name){
+    public List<User> findByName(@NotBlank(message = "传入的是空值，请传值") String name){
         List<User> user = userService.findByName(name);
         return user;
     }
@@ -65,8 +64,8 @@ public class UserController {
 
     @PostMapping("/insertUser")
     public String insertUser(){
-        String string = userService.insertUser();
-        return string;
+        String news = userService.insertUser();
+        return news;
     }
 
     @GetMapping("/findByNameAndPassword")
