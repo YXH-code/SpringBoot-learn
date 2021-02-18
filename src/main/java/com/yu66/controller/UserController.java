@@ -7,9 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +26,7 @@ public class UserController {
     @PostMapping("/insertById")
     public String insertById(@RequestBody User user, HttpServletRequest req){
         userService.insertById(user);
+        System.out.println("URI => " + req.getRequestURI());
         return "insert success";
     }
 
@@ -38,19 +37,22 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public Optional<User> update(@RequestBody User user, HttpServletRequest req){
+    public Optional<User> update(@RequestBody User user){
         Optional<User> update = userService.update(user);
         return update;
     }
 
     @GetMapping("/showById")
-    public Optional<User> showById(int id){
+    public Optional<User> showById(@NotNull(message = "传入的是空值，请传值")
+                                       @Min(value = 0,message = "传入id有误，id要>0")
+                                       @Max(value = 100,message = "传入id有误，id要<100") int id){
         Optional<User> user = userService.showById(id);
         return user;
     }
 
     @GetMapping("/showByName")
-    public List<User> findByName(String name){
+    public List<User> findByName(@NotNull(message = "传入的是空值，请传值")
+                                     @NotEmpty(message = "传入的是空字符串，请传值") String name){
         List<User> user = userService.findByName(name);
         return user;
     }
