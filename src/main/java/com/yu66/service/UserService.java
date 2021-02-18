@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface UserService {
 
-    public String insertById(int id,String user_name,String password,String name);
+    public void insertById(User user);
 
     public String deleteById(int id);
 
-    public Optional<User> update(int id,String user_name,String password,String name);
+    public Optional<User> update(User user);
 
     public Optional<User> showById(int id);
     public List<User> findByName(String name);

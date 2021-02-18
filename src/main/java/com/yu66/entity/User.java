@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * @program: springboot-learn
  * @description: 用户表实体类
  * @author: 俞先浩
  * @create: 2021-02-08 10:17

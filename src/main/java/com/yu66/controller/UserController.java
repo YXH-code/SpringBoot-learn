@@ -6,16 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Max;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * @program: springboot-learn
  * @description: 用户控制器
  * @author: 俞先浩
  * @create: 2021-02-07 10:17
@@ -28,9 +26,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/insertById")
-    public String insertById(int id, String user_name, @NotBlank(message = "密码不能为空") String password, String name){
-        userService.insertById(id,user_name,password,name);
-        return "save success";
+    public String insertById(@RequestBody User user, HttpServletRequest req){
+        userService.insertById(user);
+        return "insert success";
     }
 
     @DeleteMapping("/deleteById")
@@ -40,9 +38,9 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public Optional<User> update(int id,String user_name,String password,String name){
-        Optional<User> user = userService.update(id, user_name, password, name);
-        return user;
+    public Optional<User> update(@RequestBody User user, HttpServletRequest req){
+        Optional<User> update = userService.update(user);
+        return update;
     }
 
     @GetMapping("/showById")

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @program: springboot-learn
  * @description: 用户业务逻辑层实现类
  * @author: 俞先浩
  * @create: 2021-02-09 11:59
@@ -34,14 +33,8 @@ public class UserServiceImpl implements UserService {
     * @Date: 2021/2/9
     */
     @Override
-    public String insertById(int id,String user_name,String password,String name) {
-        User user = new User();
-        user.setId(id);
-        user.setUser_name(user_name);
-        user.setPassword(password);
-        user.setName(name);
+    public void insertById(User user) {
         userDao.save(user);
-        return "insert success";
     }
 
     /**
@@ -65,15 +58,14 @@ public class UserServiceImpl implements UserService {
     * @Date: 2021/2/9
     */
     @Override
-    public Optional<User> update(int id, String user_name, String password, String name) {
-        Optional<User> user = userDao.findById(id);
-        User newUser = user.get();
-        newUser.setId(id);
-        newUser.setUser_name(user_name);
-        newUser.setPassword(password);
-        newUser.setName(name);
-        userDao.save(newUser);
-        Optional<User> optional = userDao.findById(id);
+    public Optional<User> update(User user) {
+        Optional<User> newuser = userDao.findById(user.getId());
+        newuser.get().setId(user.getId());
+        newuser.get().setUser_name(user.getUser_name());
+        newuser.get().setPassword(user.getPassword());
+        newuser.get().setName(user.getName());
+        userDao.save(newuser.get());
+        Optional<User> optional = userDao.findById(newuser.get().getId());
         return optional;
     }
 
