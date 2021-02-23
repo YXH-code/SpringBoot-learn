@@ -1,9 +1,7 @@
 package com.yu66.service;
 
 import com.yu66.entity.User;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 

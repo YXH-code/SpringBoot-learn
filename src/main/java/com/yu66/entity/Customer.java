@@ -1,13 +1,16 @@
 package com.yu66.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * @description: 用于登录
  * @author: 俞先浩
  * @create: 2021-02-23 13:31
  **/
+@Entity
 public class Customer {
+    @Id
     int id;
     String username;
     String password;
