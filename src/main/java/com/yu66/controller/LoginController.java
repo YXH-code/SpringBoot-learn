@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 /**
@@ -26,7 +27,7 @@ public class LoginController {
 
     @CrossOrigin
     @PostMapping(value = "api/login")
-    public Result login(@RequestBody Customer requestcustomer) {
+    public Result login(@RequestBody Customer requestcustomer, HttpSession session) {
         // 对 html 标签进行转义，防止 XSS 攻击
         String username = requestcustomer.getUsername();
         username = HtmlUtils.htmlEscape(username);
@@ -35,6 +36,7 @@ public class LoginController {
         if (null == customer) {
             return new Result(400);
         } else {
+            session.setAttribute("customer", customer);
             return new Result(200);
         }
     }
