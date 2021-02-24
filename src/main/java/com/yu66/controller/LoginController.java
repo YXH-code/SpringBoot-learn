@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
-import java.util.Objects;
 
 /**
  * @description: 用户登录的控制器
