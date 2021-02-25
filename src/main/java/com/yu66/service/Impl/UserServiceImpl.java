@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     /**
     * @Description: 添加用户
-    * @Param: [customer]
+    * @Param: [user]
     * @return: void
     * @Author: 俞先浩
     * @Date: 2021/2/25
