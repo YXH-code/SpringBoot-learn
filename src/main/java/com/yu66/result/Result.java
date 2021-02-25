@@ -1,7 +1,7 @@
 package com.yu66.result;
 
 /**
- * @description: 构造 response
+ * @description: 返回状态码
  * @author: 俞先浩
  * @create: 2021-02-23 11:22
  **/

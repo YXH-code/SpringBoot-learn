@@ -1,8 +1,8 @@
 package com.yu66.controller;
 
-import com.yu66.entity.Customer;
+import com.yu66.entity.User;
 import com.yu66.result.Result;
-import com.yu66.service.CustomerService;
+import com.yu66.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.util.HtmlUtils;
 import javax.servlet.http.HttpSession;
 
 /**
- * @description: 用户登录的控制器
+ * @description: 用户登录控制器
  * @author: 俞先浩
  * @create: 2021-02-23 13:33
  **/
@@ -22,20 +22,17 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    private CustomerService customerService;
+    private UserService userService;
 
     @CrossOrigin
     @PostMapping(value = "api/login")
-    public Result login(@RequestBody Customer requestcustomer, HttpSession session) {
-        // 对 html 标签进行转义，防止 XSS 攻击
-        String username = requestcustomer.getUsername();
-        username = HtmlUtils.htmlEscape(username);
+    public Result login(@RequestBody User requestuser, HttpSession session) {
 
-        Customer customer = customerService.get(requestcustomer.getUsername(), requestcustomer.getPassword());
-        if (null == customer) {
+        User user = userService.get(requestuser.getUsername(), requestuser.getPassword());
+        if (null == user) {
             return new Result(400);
         } else {
-            session.setAttribute("customer", customer);
+            session.setAttribute("user", user);
             return new Result(200);
         }
     }

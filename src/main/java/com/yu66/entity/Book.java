@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 /**
- * @description: 书籍
+ * @description: 书籍表实体类
  * @author: 俞先浩
  * @create: 2021-02-24 15:52
  **/
@@ -21,19 +21,39 @@ public class Book {
     @JoinColumn(name="cid")
     private Category category;
 
+    // 封面
     String cover;
+    // 书名
     String title;
+    // 作者
     String author;
+    // 出版日期
     String date;
+    // 出版社
     String press;
+    // 简介
     String abs;
+
+    public Book() {
+    }
+
+    public Book(int id, Category category, String cover, String title, String author, String date, String press, String abs) {
+        this.id = id;
+        this.category = Book.this.category;
+        this.cover = cover;
+        this.title = title;
+        this.author = author;
+        this.date = date;
+        this.press = press;
+        this.abs = abs;
+    }
 
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
-        this.category = category;
+        this.category = Book.this.category;
     }
 
     public String getDate() {

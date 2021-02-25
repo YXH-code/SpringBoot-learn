@@ -1,15 +1,14 @@
 package com.yu66.interceptor;
 
-import com.yu66.entity.Customer;
+import com.yu66.entity.User;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @description: 拦截器
+ * @description: 登录拦截器
  * @author: 俞先浩
  * @create: 2021-02-23 16:48
  **/
@@ -28,7 +27,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String page = uri;
 
         if(begingWith(page, requireAuthPages)){
-            Customer customer = (Customer) session.getAttribute("customer");
+            User customer = (User) session.getAttribute("customer");
             if(customer==null) {
                 httpServletResponse.sendRedirect("login");
                 return false;

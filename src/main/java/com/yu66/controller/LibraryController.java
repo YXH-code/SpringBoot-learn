@@ -4,11 +4,10 @@ import com.yu66.entity.Book;
 import com.yu66.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**
- * @description: 图书馆
+ * @description: 图书馆页面控制器
  * @author: 俞先浩
  * @create: 2021-02-24 16:24
  **/
@@ -32,7 +31,6 @@ public class LibraryController {
     public void delete(@RequestBody Book book) throws Exception {
         bookService.deleteById(book.getId());
     }
-
 
     @GetMapping("/api/categories/{cid}/books")
     public List<Book> listByCategory(@PathVariable("cid") int cid) throws Exception {
