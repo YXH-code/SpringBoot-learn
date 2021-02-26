@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @description: 书籍分类业务逻辑层实现类
@@ -40,8 +41,8 @@ public class CategoryServiceImpl implements CategoryService {
     * @Date: 2021/2/25
     */
     @Override
-    public Category get(int id) {
-        Category category= categoryDao.findById(id).orElse(null);
+    public Optional<Category> get(int id) {
+        Optional<Category> category = categoryDao.findById(id);
         return category;
     }
 }

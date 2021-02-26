@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @description: 书籍业务逻辑层实现类
@@ -66,7 +67,7 @@ public class BookServiceImpl implements BookService {
     * @Date: 2021/2/25
     */
     public List<Book> listByCategory(int cid) {
-        Category category = categoryService.get(cid);
+        Optional<Category> category = categoryService.get(cid);
         return bookDao.findAllByCategory(category);
     }
 

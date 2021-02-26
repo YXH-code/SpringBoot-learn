@@ -19,7 +19,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name="cid")
-    private Category category;
+    Category category;
 
     // 封面
     String cover;
